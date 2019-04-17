@@ -9,8 +9,12 @@ LOG = logging.getLogger(__name__)
 class JobsList(lister.Lister):
     """show builds list info of Zuul.
     """
-    headers = ('Dame', 'Description', 'Variants')
-    properties = ('name', 'description', 'variants')
+    headers = ('Name', 'Description')
+    properties = ('name', 'description')
+
+    headers_long = ('Name', 'Description', 'Variants')
+    properties_long = ('name', 'description', 'variants')
+
 
     def get_parser(self, prog_name):
         parser = super(JobsList, self).get_parser(prog_name)
@@ -20,10 +24,14 @@ class JobsList(lister.Lister):
         return parser
 
     def take_action(self, parsed_args):
+        if parsed_args.long:
+            headers, properties = self.headers_long, self.properties_long
+        else:
+            headers, properties = self.headers, self.properties
         url = '/jobs'
         resp = self.app.http_request(url)
-        values = [[b.get(p, '') for p in self.properties] for b in resp.json()]
-        return self.headers, values
+        values = [[b.get(p, '') for p in properties] for b in resp.json()]
+        return headers, values
 
 
 class JobShow(show.ShowOne):
