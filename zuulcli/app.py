@@ -27,7 +27,7 @@ class ZuulCli(app.App):
             default=os.environ.get("ZUUL_URL"),
             help='Zuul url, default as ENV: ZUUL_URL')
 
-    def http_request(self, url, method, **kwargs):
+    def http_request(self, url, method='GET', **kwargs):
         resp = requests.request(method, url, **kwargs)
         LOG.debug(json.dumps(resp.json(), indent=4))
         return resp
