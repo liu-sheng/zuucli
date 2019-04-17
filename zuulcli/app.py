@@ -1,5 +1,6 @@
 import logging
 import sys
+import os
 
 from cliff import app
 from cliff import commandmanager
@@ -21,6 +22,10 @@ class ZuulCli(app.App):
             version=dist.version,
             command_manager=commandmanager.CommandManager('zuulcli.commands'),
         )
+        self.parser.add_argument(
+            '--zuul-url',
+            default=os.environ.get("ZUUL_URL"),
+            help='Zuul url, default as ENV: ZUUL_URL')
 
     def http_request(self, url, method, **kwargs):
         resp = requests.request(method, url, **kwargs)
