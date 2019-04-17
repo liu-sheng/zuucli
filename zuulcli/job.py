@@ -22,7 +22,7 @@ class JobsList(lister.Lister):
     def take_action(self, parsed_args):
         url = '/jobs'
         resp = self.app.http_request(url)
-        values = [[b[p] for p in self.properties] for b in resp.json()]
+        values = [[b.get(p, '') for p in self.properties] for b in resp.json()]
         return self.headers, values
 
 
