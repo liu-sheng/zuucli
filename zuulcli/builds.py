@@ -9,11 +9,11 @@ LOG = logging.getLogger(__name__)
 class BuildsList(lister.Lister):
     """show builds list info of Zuul.
     """
-    headers = ('Project', 'Job Name', 'Result', 'Start Time')
-    properties = ('project', 'job_name', 'result', 'start_time')
+    headers = ('UUID', 'Project', 'Job Name', 'Result', 'Start Time')
+    properties = ('uuid', 'project', 'job_name', 'result', 'start_time')
 
-    headers_long = ('Project', 'Job Name', 'Result', 'Start Time')
-    properties_long = ('project', 'job_name', 'result', 'start_time')
+    headers_long = ('UUID', 'Project', 'Job Name', 'Result', 'Start Time')
+    properties_long = ('uuid', 'project', 'job_name', 'result', 'start_time')
 
     def get_parser(self, prog_name):
         parser = super(BuildsList, self).get_parser(prog_name)
