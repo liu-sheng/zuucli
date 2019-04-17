@@ -45,4 +45,4 @@ class BuildShow(show.ShowOne):
 
     def take_action(self, parsed_args):
         resp = self.app.http_request('/builds/%s' % parsed_args.build_id)
-        return resp.json()
+        return zip(*sorted(resp.json().items()))

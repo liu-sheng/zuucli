@@ -1,4 +1,3 @@
-import logging
 import sys
 import os
 
@@ -7,7 +6,6 @@ from cliff import commandmanager
 import requests
 import pkg_resources
 import logging
-import json
 
 LOG = logging.getLogger(__name__)
 
