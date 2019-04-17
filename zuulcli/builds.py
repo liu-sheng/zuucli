@@ -26,6 +26,6 @@ class BuildsList(lister.Lister):
             headers, properties = self.headers_long, self.properties_long
         else:
             headers, properties = self.headers, self.properties
-        resp = self.app.http_request('http://80.158.17.129/api/builds', 'GET')
+        resp = self.app.http_request('/builds', 'GET')
         values = [[b[p] for p in properties] for b in resp.json()]
         return headers, values
