@@ -39,4 +39,4 @@ class JobShow(show.ShowOne):
 
     def take_action(self, parsed_args):
         resp = self.app.http_request('/job/%s' % parsed_args.job_name)
-        return zip(*sorted(resp.json().items()))
+        return zip(*sorted(resp.json()[0].items()))
