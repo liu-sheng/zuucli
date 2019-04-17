@@ -31,6 +31,8 @@ class ZuulCli(app.App):
                             "env variable: ZUUL_URL")
         url = "%s%s%s" % (self.options.zuul_url, '/api', path)
         resp = requests.request(method, url, **kwargs)
+        if resp.status_code == 404:
+            raise Exception("Non-existed Entity specified")
         LOG.debug(resp.json())
         return resp
 
