@@ -1,7 +1,7 @@
 # CLI tool for Zuul API
 A CLI tool for retriving data from Zuul API
 
-##Usages:
+## Usages:
 ```bash
 $ export ZUUL_URL=http://80.158.17.129
 $ zuulctl build list
