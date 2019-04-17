@@ -12,8 +12,8 @@ class BuildsList(lister.Lister):
     headers = ('UUID', 'Project', 'Job Name', 'Result', 'Start Time')
     properties = ('uuid', 'project', 'job_name', 'result', 'start_time')
 
-    headers_long = ('UUID', 'Project', 'Job Name', 'Result', 'Start Time')
-    properties_long = ('uuid', 'project', 'job_name', 'result', 'start_time')
+    headers_long = ('UUID', 'Project', 'Job Name', 'Result', 'Start Time', 'Log Url')
+    properties_long = ('uuid', 'project', 'job_name', 'result', 'start_time', 'log_url')
 
     def get_parser(self, prog_name):
         parser = super(BuildsList, self).get_parser(prog_name)
@@ -44,5 +44,5 @@ class BuildShow(show.ShowOne):
         return parser
 
     def take_action(self, parsed_args):
-        resp = self.app.http_request('/builds/%s' % parsed_args.build_id)
+        resp = self.app.http_request('/build/%s' % parsed_args.build_id)
         return zip(*sorted(resp.json().items()))
