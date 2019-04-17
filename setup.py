@@ -50,8 +50,8 @@ setup(
         'zuulcli.commands': [
             'build_list = zuulcli.builds:BuildsList',
             'build_show = zuulcli.builds:BuildShow',
-            'job_list = zuulcli.builds:JobsList',
-            'job_show = zuulcli.builds:JobShow',
+            'job_list = zuulcli.job:JobsList',
+            'job_show = zuulcli.job:JobShow',
         ],
     },
 
