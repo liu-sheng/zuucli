@@ -49,6 +49,7 @@ setup(
         ],
         'zuulcli.commands': [
             'build_list = zuulcli.builds:BuildsList',
+            'build_show = zuulcli.builds:BuildShow',
         ],
     },
 

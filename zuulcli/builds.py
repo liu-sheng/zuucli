@@ -1,12 +1,13 @@
 import logging
 
 from cliff import lister
+from cliff import show
 
 LOG = logging.getLogger(__name__)
 
 
 class BuildsList(lister.Lister):
-    """show builds info of Zuul.
+    """show builds list info of Zuul.
     """
     headers = ('Project', 'Job Name', 'Result', 'Start Time')
     properties = ('project', 'job_name', 'result', 'start_time')
@@ -26,6 +27,22 @@ class BuildsList(lister.Lister):
             headers, properties = self.headers_long, self.properties_long
         else:
             headers, properties = self.headers, self.properties
-        resp = self.app.http_request('/builds', 'GET')
+        resp = self.app.http_request('/builds')
         values = [[b[p] for p in properties] for b in resp.json()]
         return headers, values
+
+
+class BuildShow(show.ShowOne):
+    """show one build info from Zuul API.
+    """
+
+    def get_parser(self, prog_name):
+        parser = super(BuildShow, self).get_parser(prog_name)
+        parser.add_argument('build_id',
+                            help='specified build id to show',
+                            )
+        return parser
+
+    def take_action(self, parsed_args):
+        resp = self.app.http_request('/builds/%s' % parsed_args.build_id)
+        return resp.json()
