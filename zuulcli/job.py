@@ -19,6 +19,7 @@ class JobsList(lister.Lister):
     def get_parser(self, prog_name):
         parser = super(JobsList, self).get_parser(prog_name)
         parser.add_argument('--long',
+                            action='store_true',
                             help='list zuul builds info with more properties',
                             )
         return parser
