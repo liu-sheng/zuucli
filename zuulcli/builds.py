@@ -71,7 +71,7 @@ class BuildsList(lister.Lister):
         for filter in ['project', 'pipeline', 'change', 'branch', 'patchset',
                        'ref', 'newrev', 'uuid', 'job_name', 'voting', 'node_name',
                        'result', 'limit']:
-            if getattr(parsed_args, filter):
+            if getattr(parsed_args, filter) is not None:
                 filters += "%s=%s" % (filter, getattr(parsed_args, filter))
         if filters:
             url += "?%s" % filters
