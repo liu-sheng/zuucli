@@ -12,8 +12,8 @@ class JobsList(lister.Lister):
     headers = ('Name', 'Description')
     properties = ('name', 'description')
 
-    headers_long = ('Name', 'Description', 'Variants')
-    properties_long = ('name', 'description', 'variants')
+    headers_long = ('Name', 'Description', 'Tags', 'Variants')
+    properties_long = ('name', 'description', 'tags', 'variants')
 
 
     def get_parser(self, prog_name):
