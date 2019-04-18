@@ -3,6 +3,8 @@ import logging
 from cliff import lister
 from cliff import show
 
+from zuulcli import utils
+
 LOG = logging.getLogger(__name__)
 
 
@@ -32,5 +34,11 @@ class ProjectShow(show.ShowOne):
         return parser
 
     def take_action(self, parsed_args):
-        resp = self.app.http_request('/project/%s' % parsed_args.project)
-        return zip(*sorted(resp.json().items()))
+        resp = self.app.http_request('/project/%s' % parsed_args.project).json()
+        values = []
+        for value in resp.values():
+            if isinstance(value, list) or isinstance(value, dict):
+                values.append(utils.DictListColumn(value))
+            else:
+                values.append(value)
+        return tuple(resp.keys()), tuple(values)
