@@ -29,3 +29,5 @@ $ zuulctl build list
 
 All the available commands, you can use `zuulctl help/-h/--help` to find, and you can also
 use `zuulctl help {command}`to get help infomation about a specified command.
+
+All the Zuul API you can find in the [ZuulWebAPI class](https://github.com/openstack-infra/zuul/blob/master/zuul/web/__init__.py) in Zuul repo
