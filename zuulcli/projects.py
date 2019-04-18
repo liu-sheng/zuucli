@@ -33,4 +33,4 @@ class ProjectShow(show.ShowOne):
 
     def take_action(self, parsed_args):
         resp = self.app.http_request('/project/%s' % parsed_args.project)
-        return zip(*sorted(resp.json()[0].items()))
+        return zip(*sorted(resp.json().items()))
