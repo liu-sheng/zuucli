@@ -1,9 +1,18 @@
 # CLI tool for Zuul API
 A CLI tool for retriving data from Zuul API
 
-## Usages:
+## Usages
+
+you can simply install this tool with command:
 ```bash
-$ export ZUUL_URL=http://80.158.17.129
+pip install git+https://github.com/liu-sheng/zuulcli
+```
+
+Then, you can use `zuulctl` command with `--zuul-url` or `ZUUL_URL` environment variable
+to retrive data from Zuul API, for an example:
+
+```bash
+$ export ZUUL_URL=http://status.openlabtesting.org
 $ zuulctl build list
 +----------------------------------+------------------------------------+--------------------------------------------------------------------------------+--------------+---------------------+
 | UUID                             | Project                            | Job Name                                                                       | Result       | Start Time          |
@@ -16,28 +25,7 @@ $ zuulctl build list
 | ae779d3bc3234308b802138ce54466db | h00130372/charts                   | helm-integration-test-kubeadm-k8s-v1.14.0                                      | SUCCESS      | 2019-04-16T06:32:48 |
 | 7a63b77495ce42afac6c11d8622a3940 | Yikun/hello-openlab                | hello-openlab-test                                                             | SUCCESS      | 2019-04-16T04:03:13 |
 
-$ zuulctl build show ae779d3bc3234308b802138ce54466db
-+------------+-----------------------------------------------------------------------------------------------------------------------------------+
-| Field      | Value                                                                                                                             |
-+------------+-----------------------------------------------------------------------------------------------------------------------------------+
-| artifacts  | []                                                                                                                                |
-| branch     | master                                                                                                                            |
-| change     | 13                                                                                                                                |
-| duration   | 425.0                                                                                                                             |
-| end_time   | 2019-04-16T06:39:53                                                                                                               |
-| job_name   | helm-integration-test-kubeadm-k8s-v1.14.0                                                                                         |
-| log_url    | http://80.158.17.129/logs/13/13/0bb00c4208a80096372fb004b1476716e1a396d0/check/helm-integration-test-kubeadm-k8s-v1.14.0/ae779d3/ |
-| newrev     | None                                                                                                                              |
-| node_name  | None                                                                                                                              |
-| patchset   | 0bb00c4208a80096372fb004b1476716e1a396d0                                                                                          |
-| pipeline   | check                                                                                                                             |
-| project    | h00130372/charts                                                                                                                  |
-| provides   | []                                                                                                                                |
-| ref        | refs/pull/13/head                                                                                                                 |
-| ref_url    | https://github.com/h00130372/charts/pull/13                                                                                       |
-| result     | SUCCESS                                                                                                                           |
-| start_time | 2019-04-16T06:32:48                                                                                                               |
-| uuid       | ae779d3bc3234308b802138ce54466db                                                                                                  |
-| voting     | True                                                                                                                              |
-+------------+-----------------------------------------------------------------------------------------------------------------------------------+
 ```
+
+All the available commands, you can use `zuulctl help/-h/--help` to find, and you can also
+use `zuulctl help {command}`to get help infomation about a specified command.
