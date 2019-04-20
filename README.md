@@ -81,6 +81,8 @@ available commands and arguments, following are current supported commands(will 
   zuulctl help           print detailed help for another command (cliff)
   zuulctl build list     show builds list info of Zuul.
   zuulctl build show     show one build info from Zuul API.
+  zuulctl buildset list  show buildsets list info of Zuul.
+  zuulctl buildset show  show one buildset info from Zuul API.
   zuulctl job list       show jobs list info of Zuul.
   zuulctl job show       show one job info from Zuul API.
   zuulctl project list   show projects list info of Zuul.
