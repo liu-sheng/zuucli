@@ -6,7 +6,7 @@ from cliff import show
 LOG = logging.getLogger(__name__)
 
 
-class BuildsetList(lister.Lister):
+class BuildsetsList(lister.Lister):
     """show buildsets list info of Zuul.
     """
     headers = ('UUID', 'Project', 'Job Name', 'Result', 'Start Time')
@@ -16,7 +16,7 @@ class BuildsetList(lister.Lister):
     properties_long = ('uuid', 'project', 'job_name', 'result', 'start_time', 'log_url')
 
     def get_parser(self, prog_name):
-        parser = super(BuildsetList, self).get_parser(prog_name)
+        parser = super(BuildsetsList, self).get_parser(prog_name)
         parser.add_argument('--long',
                             action='store_true',
                             help='list zuul buildsets info with more properties',
