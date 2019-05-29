@@ -37,6 +37,7 @@ setup(
               ],
     install_requires=[
         'cliff>2.9.0',
+        'requests!=2.20.0'
     ],
 
     namespace_packages=[],
