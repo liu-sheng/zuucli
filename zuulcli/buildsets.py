@@ -64,13 +64,13 @@ class BuildsetsList(lister.Lister):
         else:
             headers, properties = self.headers, self.properties
         url = '/buildsets'
-        filters = ''
+        filters = []
         for filter in ['project', 'pipeline', 'change', 'branch', 'patchset',
                        'ref', 'newrev', 'uuid', 'result', 'limit']:
             if getattr(parsed_args, filter) is not None:
-                filters += "%s=%s" % (filter, getattr(parsed_args, filter))
+                filters.append("%s=%s" % (filter, getattr(parsed_args, filter)))
         if filters:
-            url += "?%s" % filters
+            url += "?%s" % '&'.join(filters)
         resp = self.app.http_request(url)
         values = [[b[p] for p in properties] for b in resp.json()]
         return headers, values
