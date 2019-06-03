@@ -36,7 +36,8 @@ setup(
     provides=['zuulcli',
               ],
     install_requires=[
-        'cliff',
+        'cliff>2.9.0',
+        'requests!=2.20.0'
     ],
 
     namespace_packages=[],
